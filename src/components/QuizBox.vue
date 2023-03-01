@@ -60,4 +60,27 @@ export default {
   computed: {
     answers() {
       return [
-        ...this.currentQuestion.incorrect_answer
+        ...this.currentQuestion.incorrect_answers,
+        this.currentQuestion.correct_answer
+      ];
+    }
+  },
+  methods: {
+    selectAnswer(index) {
+      let isCorrect = false;
+      this.selectedIndex = index;
+      if (index === this.correctIndex) {
+        isCorrect = true;
+      }
+
+      this.isSelected = true;
+      this.increment(isCorrect);
+    },
+    shuffleAnswers() {
+      this.shuffledAnswers = _.shuffle([
+        ...this.currentQuestion.incorrect_answers,
+        this.currentQuestion.correct_answer
+      ]);
+
+      this.correctIndex = this.shuffledAnswers.findIndex(
+        item => item === this.currentQuestion.correct_answ
