@@ -12,4 +12,19 @@
                 v-for="(answer, index) in shuffledAnswers"
                 :disabled="isSelected"
                 :key="index"
-                :class="[isSelected && index === selectedIndex && index === correctInd
+                :class="[isSelected && index === selectedIndex && index === correctIndex
+                  ? 'correct'
+                  : isSelected && index === selectedIndex
+                    ? 'incorrect'
+                    : isSelected && index === correctIndex
+                      ? 'correct'
+                      : ''
+                  ]"
+              >{{answer}}</b-list-group-item>
+            </b-list-group>
+            <b-button :disabled="selectedIndex === null" variant="success" @click="next">Next</b-button>
+          </b-jumbotron>
+          <b-jumbotron v-else>
+            <p>You have finished the quiz</p>
+            <h1>{{correctNum}}/{{total}}</h1>
+          
