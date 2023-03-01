@@ -27,4 +27,37 @@
           <b-jumbotron v-else>
             <p>You have finished the quiz</p>
             <h1>{{correctNum}}/{{total}}</h1>
-          
+            <b-button variant="success" @click="reset">Try again</b-button>
+          </b-jumbotron>
+        </b-col>
+      </b-row>
+    </b-container>
+  </div>
+</template>
+
+<script>
+import _ from "lodash";
+
+export default {
+  props: [
+    "currentQuestion",
+    "next",
+    "increment",
+    "reset",
+    "total",
+    "correctNum"
+  ],
+  watch: {
+    currentQuestion: {
+      immediate: true,
+      handler() {
+        this.selectedIndex = null;
+        this.isSelected = false;
+        this.shuffleAnswers();
+      }
+    }
+  },
+  computed: {
+    answers() {
+      return [
+        ...this.currentQuestion.incorrect_answer
