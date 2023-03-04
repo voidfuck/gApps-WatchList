@@ -83,4 +83,49 @@ export default {
       ]);
 
       this.correctIndex = this.shuffledAnswers.findIndex(
-        item => item === this.currentQuestion.correct_answ
+        item => item === this.currentQuestion.correct_answer
+      );
+      console.log("this.correctIndex :", this.correctIndex);
+    }
+  },
+  data() {
+    return {
+      isSelected: false,
+      selectedIndex: null,
+      correctIndex: null,
+      shuffledAnswers: []
+    };
+  }
+};
+</script>
+
+<style scoped>
+.jumbotron {
+  margin-top: 24px;
+}
+
+.list-group {
+  margin: 15px;
+}
+
+.list-group-item:hover {
+  background: #aaa;
+  cursor: pointer;
+}
+
+.btn {
+  margin: 0 5px;
+}
+
+.selected {
+  background: lightblue !important;
+}
+
+.correct {
+  background: green !important;
+  color: white !important;
+}
+
+.incorrect {
+  background: red !important;
+  co
