@@ -128,4 +128,6 @@ export default {
 
 .incorrect {
   background: red !important;
-  co
+  color: white !important;
+}
+</style>
